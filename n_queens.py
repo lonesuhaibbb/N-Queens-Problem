@@ -29,14 +29,22 @@ def solve_n_queens(n):
     return solutions
 
 
-n = 4
-solutions = solve_n_queens(n)
+try:
+    n = int(input("Enter the number of queens: "))
 
-print(f"Solutions for {n}-Queens: {len(solutions)}")
+    if n < 1:
+        print("Please enter a positive integer.")
+    else:
+        solutions = solve_n_queens(n)
 
-for solution in solutions:
-    for col in solution:
-        row = ["."] * n
-        row[col] = "Q"
-        print(" ".join(row))
-    print()
+        print(f"\nSolutions for {n}-Queens: {len(solutions)}")
+
+        for solution in solutions:
+            for col in solution:
+                row = ["."] * n
+                row[col] = "Q"
+                print(" ".join(row))
+            print()
+
+except ValueError:
+    print("Invalid input. Please enter an integer.")
